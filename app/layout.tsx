@@ -18,7 +18,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "임직원 추천 링크 생성",
     description: "사번 입력 → 상품 추천 링크 자동 생성",
-    images: ["https://shinhanezemp-referral-link.vercel.app/og-image.png?v=2"],
   },
 };
 
