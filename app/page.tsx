@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Script from "next/script";
-import { PRODUCTS, buildReferralUrl } from "@/lib/products";
+import { PRODUCTS, buildReferralUrl, buildTrackUrl } from "@/lib/products";
 
 declare global {
   interface Window {
@@ -11,7 +11,8 @@ declare global {
 }
 
 const KAKAO_APP_KEY = "4b25e37e20efdd67ba3b22d345f0a497";
-const SHARE_IMAGE_URL = "https://shinhanezemp-referral-link.vercel.app/og-image.png";
+const SITE_URL = "https://shinhanezemp-referral-link.vercel.app";
+const SHARE_IMAGE_URL = `${SITE_URL}/og-image.png`;
 
 export default function Home() {
   const [employeeId, setEmployeeId] = useState("");
@@ -45,6 +46,7 @@ export default function Home() {
       alert("카카오 SDK 로딩 중입니다. 잠시 후 다시 시도해 주세요.");
       return;
     }
+    const trackUrl = buildTrackUrl(SITE_URL, selectedProduct.id, idValue);
     window.Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
@@ -52,16 +54,16 @@ export default function Home() {
         description: "임직원 추천 링크입니다. 아래 버튼을 눌러 가입해 주세요 :)",
         imageUrl: SHARE_IMAGE_URL,
         link: {
-          mobileWebUrl: generatedUrl,
-          webUrl: generatedUrl,
+          mobileWebUrl: trackUrl,
+          webUrl: trackUrl,
         },
       },
       buttons: [
         {
           title: "지금 가입하기",
           link: {
-            mobileWebUrl: generatedUrl,
-            webUrl: generatedUrl,
+            mobileWebUrl: trackUrl,
+            webUrl: trackUrl,
           },
         },
       ],

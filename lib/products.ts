@@ -51,6 +51,10 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
+export function buildTrackUrl(baseUrl: string, productId: string, employeeId: string): string {
+  return `${baseUrl}/track?p=${encodeURIComponent(productId)}&emp=${encodeURIComponent(employeeId)}`;
+}
+
 export function buildReferralUrl(product: Product, employeeId: string): string {
   const { source, medium, campaign, content } = product.utmParams;
   return (
