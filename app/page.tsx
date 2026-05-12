@@ -19,8 +19,11 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
 
   const selectedProduct = PRODUCTS.find((p) => p.id === selectedProductId)!;
-  const generatedUrl = employeeId.trim()
-    ? buildReferralUrl(selectedProduct, employeeId.trim())
+  const idValue = employeeId.trim();
+  const idValid = /^\d{7}$/.test(idValue);
+  const idError = idValue.length > 0 && !idValid ? "사번이 올바르지 않습니다." : "";
+  const generatedUrl = idValid
+    ? buildReferralUrl(selectedProduct, idValue)
     : "";
 
   async function handleCopy() {
@@ -131,12 +134,19 @@ export default function Home() {
               </label>
               <input
                 type="text"
-                inputMode="text"
-                placeholder="사번을 입력하세요"
-                className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#E8001D] focus:border-transparent"
+                inputMode="numeric"
+                placeholder="7자리 숫자를 입력하세요"
+                className={`w-full rounded-xl border px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:border-transparent ${
+                  idError
+                    ? "border-red-400 focus:ring-red-400"
+                    : "border-gray-200 focus:ring-[#E8001D]"
+                }`}
                 value={employeeId}
                 onChange={(e) => setEmployeeId(e.target.value)}
               />
+              {idError && (
+                <p className="mt-1.5 text-xs text-red-500">{idError}</p>
+              )}
             </div>
 
             {/* 생성된 URL */}
