@@ -32,6 +32,12 @@ export default function Home() {
 
   function handleKakaoShare() {
     if (!generatedUrl) return;
+    // 카카오톡 인앱 브라우저: Share API 사용 불가 → 링크 복사로 대체
+    if (/KAKAOTALK/i.test(navigator.userAgent)) {
+      navigator.clipboard.writeText(generatedUrl).catch(() => {});
+      alert("카카오톡 내 브라우저에서는 공유 버튼을 사용할 수 없습니다.\n링크가 복사되었습니다. 채팅창에 붙여넣기 해주세요.");
+      return;
+    }
     if (!window.Kakao?.isInitialized()) {
       alert("카카오 SDK 로딩 중입니다. 잠시 후 다시 시도해 주세요.");
       return;
