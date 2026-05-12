@@ -53,12 +53,19 @@ export const PRODUCTS: Product[] = [
 
 export function buildReferralUrl(product: Product, employeeId: string): string {
   const { source, medium, campaign, content } = product.utmParams;
+  // baseUrl에 '#' 해시가 포함된 경우 UTM은 '#' 앞에 붙어야 서버로 전달됨
+  const hashIndex = product.baseUrl.indexOf("#");
+  const [base, hash] =
+    hashIndex >= 0
+      ? [product.baseUrl.slice(0, hashIndex), product.baseUrl.slice(hashIndex)]
+      : [product.baseUrl, ""];
   return (
-    `${product.baseUrl}` +
+    `${base}` +
     `?utm_source=${source}` +
     `&utm_medium=${medium}` +
     `&utm_campaign=${campaign}` +
     `&utm_content=${content}` +
-    `&utm_term=${encodeURIComponent(employeeId)}`
+    `&utm_term=${encodeURIComponent(employeeId)}` +
+    hash
   );
 }

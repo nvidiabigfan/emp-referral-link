@@ -32,6 +32,10 @@ export default function Home() {
 
   function handleKakaoShare() {
     if (!generatedUrl) return;
+    if (!window.Kakao?.isInitialized()) {
+      alert("카카오 SDK 로딩 중입니다. 잠시 후 다시 시도해 주세요.");
+      return;
+    }
     window.Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
