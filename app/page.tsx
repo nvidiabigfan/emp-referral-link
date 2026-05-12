@@ -11,7 +11,7 @@ declare global {
 }
 
 const KAKAO_APP_KEY = "4b25e37e20efdd67ba3b22d345f0a497";
-const SHARE_IMAGE_URL = "https://shinhanezemp-referral-link.vercel.app/og-image.png";
+const SHARE_IMAGE_URL = "https://shinhanezemp-referral-link.vercel.app/og-image.png?v=2";
 
 export default function Home() {
   const [employeeId, setEmployeeId] = useState("");
