@@ -12,7 +12,7 @@ declare global {
 
 const KAKAO_APP_KEY = "4b25e37e20efdd67ba3b22d345f0a497";
 const SITE_URL = "https://shinhanezemp-referral-link.vercel.app";
-const SHARE_IMAGE_URL = `${SITE_URL}/og-image.png`;
+const SHARE_IMAGE_URL = `${SITE_URL}/kakao-image.png`;
 
 export default function Home() {
   const [employeeId, setEmployeeId] = useState("");
@@ -53,8 +53,8 @@ export default function Home() {
         title: `신한 ${selectedProduct.name} 추천 링크`,
         description: "임직원 추천 링크입니다. 아래 버튼을 눌러 가입해 주세요 :)",
         imageUrl: SHARE_IMAGE_URL,
-        imageWidth: 1200,
-        imageHeight: 628,
+        imageWidth: 1774,
+        imageHeight: 887,
         link: {
           mobileWebUrl: trackUrl,
           webUrl: trackUrl,
