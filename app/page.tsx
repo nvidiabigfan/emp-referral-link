@@ -53,8 +53,8 @@ export default function Home() {
         title: `신한 ${selectedProduct.name} 추천 링크`,
         description: "임직원 추천 링크입니다. 아래 버튼을 눌러 가입해 주세요 :)",
         imageUrl: SHARE_IMAGE_URL,
-        imageWidth: 1774,
-        imageHeight: 887,
+        imageWidth: 1200,
+        imageHeight: 628,
         link: {
           mobileWebUrl: trackUrl,
           webUrl: trackUrl,
