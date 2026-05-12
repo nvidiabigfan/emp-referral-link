@@ -54,7 +54,7 @@ export default function Home() {
         description: "임직원 추천 링크입니다. 아래 버튼을 눌러 가입해 주세요 :)",
         imageUrl: SHARE_IMAGE_URL,
         imageWidth: 1200,
-        imageHeight: 628,
+        imageHeight: 1200,
         link: {
           mobileWebUrl: trackUrl,
           webUrl: trackUrl,
